@@ -1,0 +1,24 @@
+// Copyright 2006 The Android Open Source Project
+
+cc_library_headers {
+    name: "libhardware_headers",
+    export_include_dirs: ["include"],
+}
+
+cc_library_shared {
+    name: "libhardware",
+
+    srcs: ["hardware.c"],
+    shared_libs: [
+        "libcutils",
+        "liblog",
+        "libdl",
+    ],
+    cflags: ["-DQEMU_HARDWARE"],
+    export_include_dirs: ["include"],
+}
+
+subdirs = [
+    "modules/*",
+    "tests/*",
+]
